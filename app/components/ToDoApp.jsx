@@ -4,7 +4,7 @@ var moment = require('moment');
 
 import ToDoList from 'ToDoList';
 import AddToDo from 'AddToDo';
-var ToDoSearch = require('ToDoSearch');
+import ToDoSearch from 'ToDoSearch';
 var ToDoAPI = require('ToDoAPI');
 
 var ToDoApp = React.createClass({
