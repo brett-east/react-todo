@@ -27,4 +27,44 @@ describe('Reducers', () => {
     });
   });
 
+
+  describe('todosReducer', () => {
+    it('should add new todo', () => {
+      var action = {
+        type: 'ADD_TODO',
+        text: 'Clean socks'
+      };
+
+      var res = reducers.todosReducer(df([]), df(action));
+
+      expect(res.length).toEqual(1);
+      expect(res[0].text).toEqual(action.text);
+    });
+
+    //start with a real todos array and then check the completed status after the reducers
+    //generate action with matching id
+    //call reducer and assert completed flipped
+
+    it('should toggle todo', () => {
+      var action = {
+        type: 'TOGGLE_TODO',
+        id: 3
+      };
+      var todos = [{
+        id: 3,
+        text: 'Wash car',
+        completed: false,
+        createdAt: 12435,
+        completedAt: undefined
+      }];
+
+      var res = reducers.todosReducer(df(todos), df(action));
+
+      console.log(res);
+
+      expect(res[0].completed).toEqual(true);
+      expect(res[0].completedAt).toNotBe(undefined);
+    });
+  });
+
 });
