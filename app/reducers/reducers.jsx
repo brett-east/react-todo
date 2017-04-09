@@ -26,7 +26,6 @@ export var todosReducer = (state = [], action) => {
         ...state,
         action.todo
       ];
-      //add case for TOGGLE_TODO if the id is something, modify it completed = opposite vale, new completed time
     case 'UPDATE_TODO':
       return state.map((todo) => {
         if (todo.id === action.id) {
