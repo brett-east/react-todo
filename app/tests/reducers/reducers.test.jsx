@@ -32,13 +32,18 @@ describe('Reducers', () => {
     it('should add new todo', () => {
       var action = {
         type: 'ADD_TODO',
-        text: 'Clean socks'
+        todo: {
+          id: 'abc123',
+          text: 'something to do',
+          complete: false,
+          createdAt: 13434
+        }
       };
 
       var res = reducers.todosReducer(df([]), df(action));
 
       expect(res.length).toEqual(1);
-      expect(res[0].text).toEqual(action.text);
+      expect(res[0]).toEqual(action.todo);
     });
 
     //start with a real todos array and then check the completed status after the reducers
