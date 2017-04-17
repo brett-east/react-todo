@@ -92,6 +92,29 @@ describe('Actions', () => {
   });
 
 
+  it('should add uid to state on login action', () => {
+    var action = {
+      type: 'LOGIN',
+      uid: '123abc'
+    }
+    var res = actions.login(action.uid);
+
+    expect(res).toEqual(action);
+  });
+
+
+  it('should remove uid from state on logout action', () => {
+    var action = {
+      type: 'LOGOUT'
+    }
+    var res = actions.logout();
+
+    expect(res).toEqual(action);
+  });
+
+
+
+// async tests
   describe('Tests with firebase todos', () => {
     var testTodoRef;
 

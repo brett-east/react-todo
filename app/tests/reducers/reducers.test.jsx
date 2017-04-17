@@ -14,7 +14,7 @@ describe('Reducers', () => {
 
       expect(res).toEqual(action.searchText);
     });
-  });
+  }); // describe searchTextReducer
 
   describe('showCompletedReducer', () => {
     it('should toggle complete status', () => {
@@ -25,7 +25,7 @@ describe('Reducers', () => {
 
       expect(res).toEqual(true);
     });
-  });
+  }); // describe showCompletedReducer
 
 
   describe('todosReducer', () => {
@@ -94,6 +94,35 @@ describe('Reducers', () => {
       expect(res.length).toEqual(1);
       expect(res[0]).toEqual(todos[0]);
     });
-  });
+  }); // describe todosReducer
+
+  describe('authReducer', () => {
+
+    it('should add uid to auth on login', () => {
+      var action = {
+        type: 'LOGIN',
+        uid: '123abc'
+      };
+
+      var res = reducers.authReducer(df({}), df(action));
+
+      expect(res.uid).toEqual(action.uid);
+    });
+
+
+    it('should remove uid from auth on logout', () => {
+      var authData = {
+        uid: '123abc'
+      };
+      var action = {
+        type: 'LOGOUT'
+      };
+
+      var res = reducers.authReducer(df(authData), df(action));
+
+      expect(res).toEqual({});
+    });
+
+  }); // describe authReducer
 
 });
